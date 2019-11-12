@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dca-backend-deployment
+  labels:
+    app: dca-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dca-backend-pod
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: dca-backend-pod
+    spec:
+      containers:
+      - name: dca
+        image: sidgujrathi/dca
+        ports:
+        - name: dca-pod-port
+          containerPort: 5000

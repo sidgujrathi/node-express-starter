@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dca-backend-pod
+  labels:
+    app: dca-backend-pod
+spec:
+  containers:
+  - name: dca
+    image: sidgujrathi/dca
+    ports:
+    - name: dca-pod-port
+      containerPort: 5000
